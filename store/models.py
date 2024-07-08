@@ -20,6 +20,10 @@ class Customer(models.Model):
     email = models.EmailField(max_length=50)
     password = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = 'Customer'
+        verbose_name_plural = 'Customers'
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
@@ -30,6 +34,15 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.CharField(max_length=255, default='', blank=True, null=True)
     image = models.ImageField(upload_to='uploads/product')
+    is_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(max_digits=6, default=0, decimal_places=2)
+
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
+
+    def __str__(self):
+        return self.name
 
 
 class Order(models.Model):
@@ -40,6 +53,10 @@ class Order(models.Model):
     phone = models.CharField(max_length=20, default='', blank=True)
     date = models.DateField(default=datetime.datetime.today)
     status = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Order'
+        verbose_name_plural = 'Orders'
 
     def __str__(self):
         return f'{self.product} {self.quantity}'
