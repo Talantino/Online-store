@@ -30,6 +30,7 @@ INSTALLED_APPS = [
 
 MY_APPS = [
     'store',
+    'cart',
 ]
 
 THIRD_PARTY_APPS = [
@@ -61,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
