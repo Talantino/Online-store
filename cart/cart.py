@@ -40,7 +40,7 @@ class Cart:
         total = 0
 
         for key, value in quantities.items():
-        # Convert key string into into so we can do math
+        # Convert key string into integer so we can do math
             key = int(key)
             for product in products:
                 if product.id == key:
@@ -79,3 +79,11 @@ class Cart:
 
         thing = self.cart
         return thing
+
+    def delete(self, product):
+        product_id = str(product)
+        # Delete from dictionary/cart
+        if product_id in self.cart:
+            del self.cart[product_id]
+
+        self.session.modified = True
